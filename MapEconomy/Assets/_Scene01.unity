@@ -142,8 +142,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tilePrefab: {fileID: 114715730073156418, guid: e27f8a27bf53a3840b017b286f272749,
     type: 2}
-  mapWidth: 20
-  mapHeight: 20
 --- !u!4 &768576201
 Transform:
   m_ObjectHideFlags: 0
@@ -198,7 +196,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0.32352942, g: 0.22089249, b: 0, a: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0

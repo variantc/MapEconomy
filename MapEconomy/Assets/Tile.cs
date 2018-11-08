@@ -11,34 +11,30 @@ public class Tile : MonoBehaviour {
     public float moisture;
     public float vegetation;
 
-    float perlinNoiseScale = 10f;
+    float perlinNoiseScale_Height = 2.5f;
 
-    SpriteRenderer sr;
-    public Color srColor;
+    public SpriteRenderer sr;
+    //public Color srColor;
 
-    private void Start()
+    private void Awake()
     {
-
         sr = GetComponent<SpriteRenderer>();
         if (sr == null)
         {
             Debug.LogError("No SpriteRenderer");
         }
-        //else
-            //Debug.Log(sr);
     }
 
-    public void SetHeightFromCoords(float width, float height)
+    public void SetHeightFromCoords(float w, float h, float offsetX, float offsetY, float scaleFactor)
     {
-        //Debug.Log(x + y);
-        height = Mathf.PerlinNoise(x / width * perlinNoiseScale, y / height * perlinNoiseScale);
-        Debug.Log(height);
-        srColor = new Color(height, height, height, 1f);
-        this.sr.color = srColor;
+        height = Mathf.PerlinNoise(
+            (x + offsetX) / w * perlinNoiseScale_Height * scaleFactor, 
+            (y + offsetY) / h * perlinNoiseScale_Height * scaleFactor
+            );
     }
-    public void SetColourFromHeight ()
+
+    public void SetColourFromHeight()
     {
-        srColor = new Color(height, height, height, 1f);
-        sr.color = srColor;
+        sr.color = new Color(height, height, height, 1f);
     }
 }
