@@ -142,6 +142,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tilePrefab: {fileID: 114715730073156418, guid: e27f8a27bf53a3840b017b286f272749,
     type: 2}
+  maxHeight: 0
+  minHeight: 0
 --- !u!4 &768576201
 Transform:
   m_ObjectHideFlags: 0

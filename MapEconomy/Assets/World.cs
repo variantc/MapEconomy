@@ -6,8 +6,11 @@ public class World : MonoBehaviour {
 
     //public Tile[,] tileArray;
     public Tile tilePrefab;
-    int mapWidth = 50;
-    int mapHeight = 50;
+    int mapWidth = 5;
+    int mapHeight = 5;
+
+    public float maxHeight = 0f;
+    public float minHeight = 0f;
 
     
 	void Start () {
@@ -53,8 +56,41 @@ public class World : MonoBehaviour {
         float noiseFactor = Random.Range(0.75f, 1.25f);
         foreach (Tile t in FindObjectsOfType<Tile>())
         {
-            t.SetHeightFromCoords(mapWidth, mapHeight, heightOffsetX, heightOffsetY, noiseFactor);
+            t.SetHeightFromCoords(mapWidth, mapHeight, heightOffsetX, heightOffsetY, noiseFactor, 1f);
+            t.SetHeightFromCoords(mapWidth, mapHeight, heightOffsetX, heightOffsetY, noiseFactor, 0.5f);
+            t.SetHeightFromCoords(mapWidth, mapHeight, heightOffsetX, heightOffsetY, noiseFactor, 1.5f);
+            t.SetHeightFromCoords(mapWidth, mapHeight, heightOffsetX, heightOffsetY, noiseFactor, 0.1f);
+            NormaliseHeights();
             t.SetColourFromHeight();
+        }
+    }
+
+    void NormaliseHeights ()
+    {
+        //float maxHeight = 0f;
+        //float minHeight = 0f;
+        //foreach (Tile t in FindObjectsOfType<Tile>())
+        //{
+        //    if (minHeight > t.height)
+        //        minHeight = t.height;
+        //    if (maxHeight < t.height)
+        //        maxHeight = t.height;
+        //}
+        //foreach (Tile t in FindObjectsOfType<Tile>())
+        //{
+        //    if (minHeight > t.height)
+        //        minHeight = t.height;
+        //    if (maxHeight < t.height)
+        //        maxHeight = t.height;
+        //}
+        float range = maxHeight - minHeight;
+        Debug.Log("Range " + range);
+
+        foreach (Tile t in FindObjectsOfType<Tile>())
+        {
+            Debug.Log("init height " + t.height);
+            t.height = (t.height - minHeight) / range;
+            Debug.Log("new height " + t.height);
         }
     }
 
